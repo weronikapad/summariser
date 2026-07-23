@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from pypdf import PdfReader as pdfr
 from groq import Groq
+import os
 
 st.title("Summariser")
 
@@ -46,7 +47,7 @@ def pdf_text_extract(pdf):
     return full_text
 
 #AI API
-AI = open("API.txt").read().strip()
+AI = os.environ["GROQ_API_KEY"]
 api = Groq(api_key =AI)
 
 #summarise the text
